@@ -1,0 +1,19 @@
+#PBS -N simborg
+#PBS -q batch
+#PBS -l walltime=4:00:00
+#PBS -l nodes=1:ppn=128,mem=256gb
+#PBS -t 324,391,401,406,444,485,502,592,694,926,944,1026,1122,1323,1515,1582,1608,1696,1702,1710,1951
+#PBS -j oe
+#PBS -o ./data/logs/_temp.o
+
+echo cd-ing...
+
+cd /home/mattho/git/ltu-cmass/
+
+echo module-ing...
+module restore myborg
+source ~/data/venv/borg/bin/activate
+
+echo running script...
+echo "arrayind is ${PBS_ARRAYID}"
+python -m cmass.nbody.jax1lpt --lhid ${PBS_ARRAYID} --matchIC
