@@ -142,7 +142,6 @@ prior_range = np.array([
     (12.8, 15.0),  # logM1
     (0.5, 2),  # alpha
     (-10, 0),  # musat
-    (0.45, 0.7),  # zpivot
 ])
 
 Nhod = 10
